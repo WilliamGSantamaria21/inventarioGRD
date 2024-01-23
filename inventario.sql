@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2023 a las 18:13:28
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 23-01-2024 a las 16:32:56
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `inventory`
+-- Base de datos: `inventario`
 --
 
 -- --------------------------------------------------------
@@ -53,15 +53,6 @@ CREATE TABLE `actives` (
   `category_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Volcado de datos para la tabla `actives`
---
-
-INSERT INTO `actives` (`id`, `area_id`, `name`, `description`, `type_id`, `serial`, `placaInt`, `ubication_id`, `clasification_id`, `confidentiality_id`, `integrity_id`, `disponibility_id`, `justification_id`, `owner_id`, `access_id`, `dateAdmission`, `departureDate`, `status_id`, `actualizacion`, `state_id`, `created_at`, `updated_at`, `category_id`) VALUES
-(27, 1, 'archivo 1', 'este es un hardware de prueba', 6, '23333', '123', 23, 50, 34, 37, 40, 43, 1, 45, '2023-12-13', NULL, 48, 'Sin actualización', 65, '2023-12-13 15:46:37', '2023-12-13 20:46:37', 55),
-(28, 3, 'Sierra Hopkins', 'Exercitation archite', 6, 'Dolor sed est ex id', 'Voluptatem voluptas', 25, 51, 33, 37, 40, 43, 1, 45, '1974-02-06', '1996-12-15', 48, 'Quam placeat mollit', 64, '2023-12-13 20:56:50', '2023-12-13 20:56:50', 58),
-(29, 2, 'Nash Holloway', 'Reprehenderit perspi', 6, 'Corporis non velit d', 'Expedita et laborum', 28, 50, 34, 38, 41, 44, 109, 47, '2001-03-28', '1984-04-12', 48, 'Dolorem accusantium', 64, '2023-12-13 16:17:07', '2023-12-13 21:17:07', 60);
-
 -- --------------------------------------------------------
 
 --
@@ -81,18 +72,10 @@ CREATE TABLE `domains` (
 
 INSERT INTO `domains` (`id`, `description`, `created_at`, `updated_at`) VALUES
 (1, 'area', '2023-09-22 14:58:33', NULL),
-(2, 'tipo', '2023-09-22 14:58:33', NULL),
-(3, 'ubicaciones', '2023-09-22 14:58:33', NULL),
-(4, 'confidencialidad', '2023-09-22 14:58:33', NULL),
-(5, 'integridad', '2023-09-22 14:58:33', NULL),
-(6, 'disponibilidad', '2023-09-22 14:58:33', NULL),
-(7, 'justificacion', '2023-09-22 14:58:33', NULL),
-(9, 'acceso', '2023-09-22 14:58:33', NULL),
-(10, 'estado', '2023-09-22 14:58:33', NULL),
-(11, 'actualizacion', '2023-09-22 14:58:33', NULL),
-(12, 'clasificacion', '2023-09-22 14:58:33', NULL),
-(15, 'categorias', '2023-10-24 14:25:15', NULL),
-(16, 'estados_generales', '2023-11-21 14:27:01', NULL);
+(2, 'ubicaciones', '2024-01-23 15:29:12', NULL),
+(3, 'acceso', '2024-01-23 15:29:16', NULL),
+(4, 'categorias', '2024-01-23 15:29:19', NULL),
+(5, 'estados_generales', '2024-01-23 15:30:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -176,7 +159,10 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (4, 'App\\Models\\User', 1),
+(4, 'App\\Models\\User', 2),
 (4, 'App\\Models\\User', 109),
+(5, 'App\\Models\\User', 3),
+(5, 'App\\Models\\User', 4),
 (5, 'App\\Models\\User', 34),
 (5, 'App\\Models\\User', 107);
 
@@ -328,8 +314,11 @@ CREATE TABLE `sessions` (
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
 ('8gAbag4zjHyod0VfvQCmKXt9cp3k9XtfLR3L2y5H', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSlBpc3lFa1BacmlDZWREY2VFQXl5ZlI5MUNjN2dmdWlZakROd3hNeSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ob21lIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MDI0ODQxMTQ7fX0=', 1702484115),
+('FtFvfqQXzDSBva3skknGzPTHfjtpIqYnBTJdwbLs', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNjJaOUo5dmh4eDVLSUZHNWxHODQxV3J2TXF3M0lETjJjanVIdWFFbCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDk6Imh0dHA6Ly9sb2NhbGhvc3QvaW52ZW50YXJpby9wdWJsaWMvYWN0aXZlcy9jcmVhdGUiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NDoiYXV0aCI7YToxOntzOjIxOiJwYXNzd29yZF9jb25maXJtZWRfYXQiO2k6MTcwNjAyMjgxOTt9fQ==', 1706023272),
 ('OIb3XJgnr3gJSz3PcTT0qFTES5ypR5qTD9rvW7MB', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRzNZSGZpZ3RBNm9MR1doNkNxbDIzUGtPakU3ZmsyUFZTcWJ5UnkwVyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1702484550),
-('ppZ8UtUprJpcZjJq1xCSzO2uf28s2QaKTuxpxjtg', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiT3JLbkI5UmxNekp2ZUlqYThVYndIN1I4bTJBRzQ0MTJGQUlMY1J0WCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1702487505);
+('ppZ8UtUprJpcZjJq1xCSzO2uf28s2QaKTuxpxjtg', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiT3JLbkI5UmxNekp2ZUlqYThVYndIN1I4bTJBRzQ0MTJGQUlMY1J0WCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1702487505),
+('vp9F6vsXbvoZx1n40oHKUeNzVDKCYLzGAWNgil9q', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOTQ5NHhXSEVSWkpxSmxPMWJqanlwS29SQ2ZycUNScVI3SnVYNTQzYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly9sb2NhbGhvc3QvaW52ZW50YXJpby9wdWJsaWMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1706021738),
+('xSZRrQ2lDoG6qd44REe2meMmpTmluMEAyCnn45sJ', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicDVtazNSdmZ3eDFXWHVpWDh0M29SWXlBY2JDSXVVb3dxR09VaUMwSyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly9sb2NhbGhvc3QvaW52ZW50YXJpby9wdWJsaWMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1706021938);
 
 -- --------------------------------------------------------
 
@@ -350,53 +339,8 @@ CREATE TABLE `subdomains` (
 --
 
 INSERT INTO `subdomains` (`id`, `id_domain`, `description`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Infraestructura', '2023-09-22 15:01:27', NULL),
-(2, 1, 'Recursos', '2023-09-22 15:01:27', NULL),
-(3, 1, 'Documental', '2023-09-22 15:01:27', NULL),
-(6, 2, 'Fisico', '2023-09-22 15:02:43', NULL),
-(7, 2, 'Digital', '2023-09-22 15:02:43', NULL),
-(22, 3, 'Data center taller 32B', '2023-09-22 15:06:23', NULL),
-(23, 3, 'Isla A taller 32 A', '2023-09-22 15:06:23', NULL),
-(24, 3, 'Isla B taller 32 A', '2023-09-22 15:06:23', NULL),
-(25, 3, 'SENNOVA', '2023-09-22 15:06:23', NULL),
-(26, 3, 'Taller 24 B', '2023-09-22 15:06:23', NULL),
-(27, 3, 'Isla A taller 32 B', '2023-09-22 15:06:23', NULL),
-(28, 3, 'Isla B taller 32 B', '2023-09-22 15:06:23', NULL),
-(29, 3, 'Mantilla', '2023-09-22 15:07:54', NULL),
-(30, 3, 'IITIC', '2023-09-22 15:07:54', NULL),
-(31, 3, 'SENA -CEAI', '2023-09-22 15:07:54', NULL),
-(32, 3, 'Gestion documental', '2023-09-22 15:07:54', NULL),
-(33, 4, 'Alto', '2023-09-22 15:09:01', NULL),
-(34, 4, 'Medio', '2023-09-22 15:09:01', NULL),
-(35, 4, 'Bajo', '2023-09-22 15:09:01', NULL),
-(36, 5, 'Alto', '2023-09-22 15:09:50', NULL),
-(37, 5, 'Medio', '2023-09-22 15:09:50', NULL),
-(38, 5, 'Bajo', '2023-09-22 15:09:50', NULL),
-(39, 6, 'Alto', '2023-09-22 15:11:13', NULL),
-(40, 6, 'Medio', '2023-09-22 15:11:13', NULL),
-(41, 6, 'Bajo', '2023-09-22 15:11:13', NULL),
-(42, 7, 'Afecta toda la triada del SGSI', '2023-09-22 15:12:37', NULL),
-(43, 7, 'Afecta la disponibilidad del servicio de toda la red de datos del datacenter', '2023-09-22 15:12:37', NULL),
-(44, 7, 'Afecta la disponibilidad del servicio parcialmente', '2023-09-22 15:12:37', NULL),
-(45, 9, 'Restringido', '2023-09-22 15:14:42', NULL),
-(46, 9, 'Publico', '2023-09-22 15:14:42', NULL),
-(47, 9, 'Privado', '2023-09-22 15:14:42', NULL),
-(48, 10, 'Operativo', '2023-09-22 15:16:31', NULL),
-(49, 11, 'Registro', '2023-09-22 15:17:03', NULL),
-(50, 12, 'Interno', '2023-09-22 15:18:10', NULL),
-(51, 12, 'Publico', '2023-09-22 15:18:10', NULL),
-(54, 15, 'Software', '2023-10-24 14:34:15', NULL),
-(55, 15, 'Hardware de computadoras', '2023-10-24 14:34:15', NULL),
-(56, 15, 'Equipos de comunicación', '2023-11-17 00:23:25', NULL),
-(57, 15, 'Infraestructura de red', '2023-11-17 00:26:23', NULL),
-(58, 15, 'Almacenamiento de datos', '2023-11-17 00:26:23', NULL),
-(59, 15, 'Equipos de seguridad informática', '2023-11-17 00:26:23', NULL),
-(60, 15, 'Dispositivos IoT', '2023-11-17 00:26:23', NULL),
-(61, 15, 'Componentes electrónicos', '2023-11-17 00:26:23', NULL),
-(62, 15, 'Servicios en la nube', '2023-11-17 00:26:23', NULL),
-(63, 15, 'Equipos de impresión y escaneo', '2023-11-17 00:26:23', NULL),
-(64, 16, 'activo', '2023-11-21 14:27:29', NULL),
-(65, 16, 'inactivo', '2023-11-21 14:27:45', NULL);
+(1, 5, 'activo', '2024-01-23 15:31:36', NULL),
+(2, 5, 'inactivo', '2024-01-23 15:31:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -430,8 +374,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`, `identification_number`, `phone_number`, `state_id`, `start_date`, `end_date`) VALUES
-(1, 'David Armando Guevara Cano', 'david@gmail.com', NULL, '$2y$13$r5dE.nweqXouXdpfCLESNulXCUmO4Z6vhj/X2ephy8Bh.K.yoXniC', NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-16 02:30:06', '2023-11-17 01:23:11', 4444541, '323555', 64, '2023-11-15', '2023-12-15'),
-(109, 'joselo antonelo', 'antonelo@gmail.com', NULL, '$2y$13$YdHXa7ynIcDdv3j4jvAWeO6nBpMY5VV206Ccq5ThUPAHbiYOyALIa', NULL, NULL, NULL, NULL, NULL, NULL, '2023-12-13 20:30:06', '2023-12-13 20:30:59', 55555, NULL, 65, NULL, NULL);
+(1, 'Juan Pablo Agredo Castaño', 'juagre@gmail.com', NULL, '$2y$13$r5dE.nweqXouXdpfCLESNulXCUmO4Z6vhj/X2ephy8Bh.K.yoXniC', NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-16 02:30:06', '2024-01-23 20:13:16', 44445414, '323555', 1, '2023-11-15', '2023-12-15'),
+(2, 'Gustavo Adolfo Diaz Rojas', 'gad@misena.edu.co', NULL, '$2y$13$E2CwygFa0JvZaSl/3IT5/eJMk1/EgHncNRN2XvxD71ydHySokNcaW', NULL, NULL, NULL, NULL, NULL, NULL, '2024-01-23 20:15:30', '2024-01-23 20:15:30', 16640114, NULL, 1, NULL, NULL),
+(3, 'Gustavo Adolfo Rodríguez Salinas', 'grodriguez@misena.edu.co', NULL, '$2y$13$PLaPL9ZFDo3pOSQdb0ZctOxCHw.E2oMeIFWzwzGcecwjw/Tx9I.R2', NULL, NULL, NULL, NULL, NULL, NULL, '2024-01-23 20:16:30', '2024-01-23 20:16:30', 12345678, NULL, 1, NULL, NULL),
+(4, 'Diego Fernando Rodríguez Mapallo', 'diegofer74@gmail.com', NULL, '$2y$13$zyJdvzgGr9yP5E1BDt6MmeJtg1iQPMmL4ycKd9AksVGp.LlBdar9i', NULL, NULL, NULL, NULL, NULL, NULL, '2024-01-23 20:20:11', '2024-01-23 20:20:11', 123456789, NULL, 1, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -567,7 +513,7 @@ ALTER TABLE `actives`
 -- AUTO_INCREMENT de la tabla `domains`
 --
 ALTER TABLE `domains`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -603,13 +549,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `subdomains`
 --
 ALTER TABLE `subdomains`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
