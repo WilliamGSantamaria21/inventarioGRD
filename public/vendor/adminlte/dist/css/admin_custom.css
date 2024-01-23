@@ -1,0 +1,54 @@
+[class*=sidebar-dark-] {
+    background-color: #28a745;
+}
+
+[class*=sidebar-dark] .btn-sidebar, [class*=sidebar-dark] .form-control-sidebar {
+    background-color: #fff;
+    border: 1px solid #56606a;
+    color: #6c757d;
+}
+
+[class*=sidebar-dark-] .sidebar a {
+    color: #fff;
+}
+
+.image-container {
+    display: flex; /* Esto hace que los elementos se muestren en línea */
+    flex-wrap: wrap; /* Esto permite que las imágenes se envuelvan automáticamente si no caben en una sola fila */
+    gap: 10px; /* Esto agrega espacio entre las imágenes */
+}
+
+/* Agrega estas reglas CSS en tu archivo CSS personalizado */
+.img-responsive-custom {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.delete-form {
+    display: inline; /* Esto hace que el formulario se vea como una línea en línea */
+}
+
+.delete-button-small-round {
+    padding: 3px 8px !important; /* Ajusta el espaciado interno del botón para hacerlo más pequeño */
+    border: none !important; /* Quita el borde del botón */
+    border-radius: 50% !important; /* Hace que el borde sea completamente redondo */
+    color: #fff !important; /* Cambia el color del texto a blanco */
+    background-color: #d9534f !important; /* Cambia el color de fondo a rojo (puedes ajustarlo según tus preferencias) */
+    cursor: pointer !important; /* Cambia el cursor al estilo de una mano al pasar sobre el botón */
+}
+
+.delete-button-small-round:hover {
+    background-color: #c9302c !important; /* Cambia el color de fondo cuando el mouse pasa sobre el botón */
+}
+.img-fixed-size {
+    width: 100px; /* Ancho deseado en píxeles */
+    height: 100px; /* Alto deseado en píxeles */
+}
+
+.btn-group {
+    display: flex;
+    gap: 5px;
+}
+
+
+
