@@ -39,10 +39,6 @@
                                     {{ $active->description }}
                                 </div>
                                 <div class="form-group">
-                                    <strong>Tipo:</strong>
-                                    {{ $types[$active->type_id] ?? 'N/A' }}
-                                </div>
-                                <div class="form-group">
                                     <strong>Serial:</strong>
                                     {{ $active->serial }}
                                 </div>
@@ -69,26 +65,6 @@
                                     {{ $ubications[$active->ubication_id] ?? 'N/A' }}
                                 </div>
                                 <div class="form-group">
-                                    <strong>Clasificación:</strong>
-                                    {{ $clasifications[$active->clasification_id] ?? 'N/A' }}
-                                </div>
-                                <div class="form-group">
-                                    <strong>Confidencialidad:</strong>
-                                    {{ $confidencialities[$active->confidentiality_id] ?? 'N/A' }}
-                                </div>
-                                <div class="form-group">
-                                    <strong>Integridad:</strong>
-                                    {{ $integrities[$active->integrity_id] ?? 'N/A' }}
-                                </div>
-                                <div class="form-group">
-                                    <strong>Disponibilidad:</strong>
-                                    {{ $disponibilities[$active->disponibility_id] ?? 'N/A' }}
-                                </div>
-                                <div class="form-group">
-                                    <strong>Justificación:</strong>
-                                    {{ $justifications[$active->justification_id] ?? 'N/A' }}
-                                </div>
-                                <div class="form-group">
                                     <strong>Fecha de Ingreso:</strong>
                                     {{ $active->dateAdmission->format('d/m/Y') }}
                                 </div>
@@ -96,15 +72,9 @@
                                     <strong>Fecha de Salida:</strong>
                                     {{ $active->departureDate ? \Carbon\Carbon::parse($active->departureDate)->format('d/m/Y') : 'N/A' }}
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <strong>Estado:</strong>
-                                        {{ $status[$active->status_id] ?? 'N/A' }}
-                                    </div>
-                                    <div class="form-group">
-                                        <strong>Actualización:</strong>
-                                        {{ $active->actualizacion ?? 'N/A' }}
-                                    </div>
+                                <div class="form-group">
+                                    <strong>Actualización:</strong>
+                                    {{ $active->actualizacion }}
                                 </div>
                             </div>
 

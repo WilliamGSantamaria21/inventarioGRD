@@ -72,7 +72,7 @@
                                             <td>{{ $ownerName[$active->owner_id] }}</td>
                                             <td>{{ $accessName[$active->access_id] }}</td>
                                             <td>{{ $active->dateAdmission }}</td>
-                                            <td>{{ $active->departureDate }}</td>
+                                            <td>{{ $active->departureDate  ?? 'N/A' }}</td>
                                             <td>{{ $active->actualizacion }}</td>
                                             <td>
                                                 <div class="btn-group">
