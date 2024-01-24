@@ -42,37 +42,37 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Área</th>
                                         <th>Nombre</th>
                                         <th>Descripción</th>
                                         <th>Marca</th>
                                         <th>Serial</th>
                                         <th>No.Placa</th>
+                                        <th>Área</th>
                                         <th>Ubicación</th>
+                                        <th>Categoría</th>
                                         <th>Poseedor</th>
                                         <th>Acceso</th>
                                         <th>Fecha ingreso</th>
                                         <th>Fecha salida</th>
-                                        <th>Categoría</th>
-                                        <th>Actualización</th>
+                                        <th>Observaciones</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($actives as $active)
                                         <tr>
-                                            <td>{{ $areaName[$active->area_id] }}</td>
                                             <td>{{ $active->name }}</td>
                                             <td>{{ \Illuminate\Support\Str::limit($active->description, $limit = 15, $end = '...') }}</td>
                                             <td>{{ $brandName[$active->marca_id] }}</td>
                                             <td>{{ $active->serial }}</td>
                                             <td>{{ $active->placaInt }}</td>
+                                            <td>{{ $areaName[$active->area_id] }}</td>
                                             <td>{{ $ubicationName[$active->ubication_id] }}</td>
+                                            <td>{{ $categories[$active->category_id]}}</td>
                                             <td>{{ $ownerName[$active->owner_id] }}</td>
                                             <td>{{ $accessName[$active->access_id] }}</td>
                                             <td>{{ $active->dateAdmission }}</td>
                                             <td>{{ $active->departureDate }}</td>
-                                            <td>{{ $categories[$active->category_id]}}</td>
                                             <td>{{ $active->actualizacion }}</td>
                                             <td>
                                                 <div class="btn-group">

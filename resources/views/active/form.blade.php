@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="form-group">
-                    {{ Form::label('Actualización') }}
+                    {{ Form::label('Observaciones') }}
                     {{ Form::text('actualizacion', $active->actualizacion, ['class' => 'form-control' . ($errors->has('actualizacion') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese una actualización']) }}
                     {!! $errors->first('actualizacion', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
