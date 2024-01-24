@@ -45,20 +45,14 @@
                                         <th>Área</th>
                                         <th>Nombre</th>
                                         <th>Descripción</th>
-                                        <th>Tipo</th>
+                                        <th>Marca</th>
                                         <th>Serial</th>
                                         <th>No.Placa</th>
                                         <th>Ubicación</th>
-                                        <th>Clasificación</th>
-                                        <th>Confidencialidad</th>
-                                        <th>Integridad</th>
-                                        <th>Disponibilidad</th>
-                                        <th>Justificación</th>
                                         <th>Poseedor</th>
                                         <th>Acceso</th>
                                         <th>Fecha ingreso</th>
                                         <th>Fecha salida</th>
-                                        <th>Estado</th>
                                         <th>Categoría</th>
                                         <th>Actualización</th>
                                         <th>Acciones</th>
@@ -69,21 +63,15 @@
                                         <tr>
                                             <td>{{ $areaName[$active->area_id] }}</td>
                                             <td>{{ $active->name }}</td>
-                                            <td>{{ \Illuminate\Support\Str::limit($active->description, $limit = 10, $end = '...') }}</td>
-                                            <td>{{ $typeName[$active->type_id] }}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($active->description, $limit = 15, $end = '...') }}</td>
+                                            <td>{{ $brandName[$active->marca_id] }}</td>
                                             <td>{{ $active->serial }}</td>
                                             <td>{{ $active->placaInt }}</td>
                                             <td>{{ $ubicationName[$active->ubication_id] }}</td>
-                                            <td>{{ $clasificationName[$active->clasification_id] }}</td>
-                                            <td>{{ $confidentialityName[$active->confidentiality_id] }}</td>
-                                            <td>{{ $integrityName[$active->integrity_id] }}</td>
-                                            <td>{{ $disponibilityName[$active->disponibility_id] }}</td>
-                                            <td>{{ $justificationName[$active->justification_id] }}</td>
                                             <td>{{ $ownerName[$active->owner_id] }}</td>
                                             <td>{{ $accessName[$active->access_id] }}</td>
                                             <td>{{ $active->dateAdmission }}</td>
                                             <td>{{ $active->departureDate }}</td>
-                                            <td>{{ $statusName[$active->status_id] }}</td>
                                             <td>{{ $categories[$active->category_id]}}</td>
                                             <td>{{ $active->actualizacion }}</td>
                                             <td>

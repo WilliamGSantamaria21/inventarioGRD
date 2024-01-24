@@ -27,9 +27,9 @@
                 </div>
 
                 <div class="form-group">
-                    {{ Form::label('tipo') }}
-                    {{ Form::select('type_id', $types, $active->type_id, ['class' => 'form-control' . ($errors->has('type_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el tipo']) }}
-                    {!! $errors->first('type_id', '<div class="invalid-feedback">:message</div>') !!}
+                    {{ Form::label('Marca') }}
+                    {{ Form::select('marca_id', $brands, $active->marca_id, ['class' => 'form-control' . ($errors->has('marca_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la marca']) }}
+                    {!! $errors->first('marca_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
 
                 <div class="form-group">
@@ -49,40 +49,10 @@
                     {{ Form::select('ubication_id', $ubications, $active->ubication_id, ['class' => 'form-control' . ($errors->has('ubication_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la ubicación']) }}
                     {!! $errors->first('ubication_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-
-                <div class="form-group">
-                    {{ Form::label('Clasificación') }}
-                    {{ Form::select('clasification_id', $clasifications, $active->clasification_id, ['class' => 'form-control' . ($errors->has('clasification_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la clasificación']) }}
-                    {!! $errors->first('clasification_id', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
                 
             </div>
 
             <div class="col-lg-6">
-
-                <div class="form-group">
-                    {{ Form::label('confidencialidad') }}
-                    {{ Form::select('confidentiality_id', $confidencialities, $active->confidentiality_id, ['class' => 'form-control' . ($errors->has('confidentiality_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el nivel de confidencialidad']) }}
-                    {!! $errors->first('confidentiality_id', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
-                <div class="form-group">
-                    {{ Form::label('integridad') }}
-                    {{ Form::select('integrity_id', $integrities, $active->integrity_id, ['class' => 'form-control' . ($errors->has('integrity_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el nivel integridad']) }}
-                    {!! $errors->first('integrity_id', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
-
-                <div class="form-group">
-                    {{ Form::label('disponibilidad') }}
-                    {{ Form::select('disponibility_id', $disponibilities, $active->disponibility_id, ['class' => 'form-control' . ($errors->has('disponibility_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el nivel de disponibilidad']) }}
-                    {!! $errors->first('disponibility_id', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
-
-                <div class="form-group">
-                    {{ Form::label('justificación') }}
-                    {{ Form::select('justification_id', $justifications, $active->justification_id, ['class' => 'form-control' . ($errors->has('justification_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la justificación']) }}
-                    {!! $errors->first('justification_id', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
-
 
                 <div class="form-group">
                     {{ Form::label('Poseedor') }}
@@ -106,12 +76,6 @@
                     {{ Form::label('Fecha de salida') }}
                     {{ Form::date('departureDate', $active->departureDate, ['class' => 'form-control' . ($errors->has('departureDate') ? ' is-invalid' : ''), 'placeholder' => 'Fecha salida']) }}
                     {!! $errors->first('departureDate', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
-
-                <div class="form-group">
-                    {{ Form::label('Estado') }}
-                    {{ Form::select('status_id', $status, $active->status_id, ['class' => 'form-control' . ($errors->has('status_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona un estado']) }}
-                    {!! $errors->first('status_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
 
                 <div class="form-group">

@@ -31,24 +31,25 @@ class ActiveController extends Controller
         if (in_array('poseedor', $roles)) {
             // Obtiene los registros paginados de actives
             $actives = Active::where('owner_id', $user->id)
-                ->where('state_id', 64)
-                ->paginate(4);
+                ->where('state_id', 1)
+                ->paginate(10);
         } else {
-            $actives = Active::where('state_id', 64)->paginate(4);
+            $actives = Active::where('state_id', 1)->paginate(10);
         }
 
         // Cargo los nombres de las áreas correspondientes en un array asociativo
         $areaName = SubDomain::whereIn('id', $actives->pluck('area_id'))->pluck('description', 'id');
-        $typeName = SubDomain::whereIn('id', $actives->pluck('type_id'))->pluck('description', 'id');
+        // $typeName = SubDomain::whereIn('id', $actives->pluck('type_id'))->pluck('description', 'id');
         $ubicationName = SubDomain::whereIn('id', $actives->pluck('ubication_id'))->pluck('description', 'id');
-        $clasificationName = SubDomain::whereIn('id', $actives->pluck('clasification_id'))->pluck('description', 'id');
-        $confidentialityName = SubDomain::whereIn('id', $actives->pluck('confidentiality_id'))->pluck('description', 'id');
-        $integrityName = SubDomain::whereIn('id', $actives->pluck('integrity_id'))->pluck('description', 'id');
-        $disponibilityName = SubDomain::whereIn('id', $actives->pluck('disponibility_id'))->pluck('description', 'id');
-        $justificationName = SubDomain::whereIn('id', $actives->pluck('justification_id'))->pluck('description', 'id');
+        $brandName = SubDomain::whereIn('id', $actives->pluck('marca_id'))->pluck('description', 'id');
+        // $clasificationName = SubDomain::whereIn('id', $actives->pluck('clasification_id'))->pluck('description', 'id');
+        // $confidentialityName = SubDomain::whereIn('id', $actives->pluck('confidentiality_id'))->pluck('description', 'id');
+        // $integrityName = SubDomain::whereIn('id', $actives->pluck('integrity_id'))->pluck('description', 'id');
+        // $disponibilityName = SubDomain::whereIn('id', $actives->pluck('disponibility_id'))->pluck('description', 'id');
+        // $justificationName = SubDomain::whereIn('id', $actives->pluck('justification_id'))->pluck('description', 'id');
         $ownerName = User::whereIn('id', $actives->pluck('owner_id'))->pluck('name', 'id');
         $accessName = SubDomain::whereIn('id', $actives->pluck('access_id'))->pluck('description', 'id');
-        $statusName = SubDomain::whereIn('id', $actives->pluck('status_id'))->pluck('description', 'id');
+        // $statusName = SubDomain::whereIn('id', $actives->pluck('status_id'))->pluck('description', 'id');
         // $actualizationName = SubDomain::whereIn('id', $actives->pluck('actuali_id'))->pluck('description', 'id');
         $categories = SubDomain::whereIn('id', $actives->pluck('category_id'))->pluck('description', 'id');
         // dd($actives);
@@ -58,16 +59,17 @@ class ActiveController extends Controller
             return view('active.index', compact(
                 'actives',
                 'areaName',
-                'typeName',
+                // 'typeName',
                 'ubicationName',
-                'clasificationName',
-                'confidentialityName',
-                'integrityName',
-                'disponibilityName',
-                'justificationName',
+                'brandName',
+                // 'clasificationName',
+                // 'confidentialityName',
+                // 'integrityName',
+                // 'disponibilityName',
+                // 'justificationName',
                 'ownerName',
                 'accessName',
-                'statusName',
+                // 'statusName',
                 'categories'
             ))->with('i', (request()->input('page', 1) - 1) * $actives->perPage());
     }
@@ -77,32 +79,34 @@ class ActiveController extends Controller
     {
         $active = new Active();
         $areas = SubDomain::where('id_domain', 1)->pluck('description', 'id');
-        $types = SubDomain::where('id_domain', 2)->pluck('description', 'id');
-        $ubications = SubDomain::where('id_domain', 3)->pluck('description', 'id');
-        $confidencialities = SubDomain::where('id_domain', 4)->pluck('description', 'id');
-        $integrities = SubDomain::where('id_domain', 5)->pluck('description', 'id');
-        $disponibilities = SubDomain::where('id_domain', 6)->pluck('description', 'id');
+        // $types = SubDomain::where('id_domain', 2)->pluck('description', 'id');
+        $ubications = SubDomain::where('id_domain', 2)->pluck('description', 'id');
+        $brands = SubDomain::where('id_domain', 6)->pluck('description', 'id');
+        // $confidencialities = SubDomain::where('id_domain', 4)->pluck('description', 'id');
+        // $integrities = SubDomain::where('id_domain', 5)->pluck('description', 'id');
+        // $disponibilities = SubDomain::where('id_domain', 6)->pluck('description', 'id');
         $owners = User::pluck('name', 'id');
-        $justifications = SubDomain::where('id_domain', 7)->pluck('description', 'id');
-        $access = SubDomain::where('id_domain', 9)->pluck('description', 'id');
-        $status = SubDomain::where('id_domain', 10)->pluck('description', 'id');
+        // $justifications = SubDomain::where('id_domain', 7)->pluck('description', 'id');
+        $access = SubDomain::where('id_domain', 3)->pluck('description', 'id');
+        // $status = SubDomain::where('id_domain', 10)->pluck('description', 'id');
         //$actualizations = SubDomain::where('id_domain', 11)->pluck('description', 'id');
-        $clasifications = SubDomain::where('id_domain', 12)->pluck('description', 'id');
-        $categories = SubDomain::where('id_domain', 15)->pluck('description', 'id');
+        // $clasifications = SubDomain::where('id_domain', 12)->pluck('description', 'id');
+        $categories = SubDomain::where('id_domain', 4)->pluck('description', 'id');
 
         return view('active.create', compact(
             'active',
             'areas',
-            'types',
+            // 'types',
             'ubications',
-            'confidencialities',
-            'integrities',
-            'disponibilities',
-            'justifications',
+            'brands',
+            // 'confidencialities',
+            // 'integrities',
+            // 'disponibilities',
+            // 'justifications',
             'owners',
             'access',
-            'status',
-            'clasifications',
+            // 'status',
+            // 'clasifications',
             'categories'
         ));
     }
@@ -116,19 +120,20 @@ class ActiveController extends Controller
             'area_id' => 'required',
             'name' => 'required',
             'description' => 'required',
-            'type_id' => 'required',
+            'marca_id' => 'required',
+            // 'type_id' => 'required',
             'serial' => 'required',
             'placaInt' => 'required',
             'ubication_id' => 'required',
-            'clasification_id' => 'required',
-            'confidentiality_id' => 'required',
-            'integrity_id' => 'required',
-            'disponibility_id' => 'required',
-            'justification_id' => 'required',
+            // 'clasification_id' => 'required',
+            // 'confidentiality_id' => 'required',
+            // 'integrity_id' => 'required',
+            // 'disponibility_id' => 'required',
+            // 'justification_id' => 'required',
             'owner_id' => 'required',
             'access_id' => 'required',
             'dateAdmission' => 'required',
-            'status_id' => 'required',
+            // 'status_id' => 'required',
             'actualizacion' => 'required',
             'category_id' => 'required'
         ]);
@@ -141,7 +146,7 @@ class ActiveController extends Controller
             $validatedData,
             ['departureDate' => $departureDate]
         );
-
+        
         $active = Active::create($data);
         $activeId = $active->id;
 
@@ -156,32 +161,34 @@ class ActiveController extends Controller
 
         // Recupera los datos necesarios de las tablas relacionadas
         $areas = SubDomain::where('id_domain', 1)->where('id', $active->area_id)->where('id', $active->area_id)->where('id', $active->area_id)->pluck('description', 'id');
-        $types = SubDomain::where('id_domain', 2)->where('id', $active->type_id)->pluck('description', 'id');
-        $ubications = SubDomain::where('id_domain', 3)->where('id', $active->ubication_id)->pluck('description', 'id');
-        $confidencialities = SubDomain::where('id_domain', 4)->where('id', $active->confidentiality_id)->pluck('description', 'id');
-        $integrities = SubDomain::where('id_domain', 5)->where('id', $active->integrity_id)->pluck('description', 'id');
-        $disponibilities = SubDomain::where('id_domain', 6)->where('id', $active->disponibility_id)->pluck('description', 'id');
-        $justifications = SubDomain::where('id_domain', 7)->where('id', $active->justification_id)->pluck('description', 'id');
+        // $types = SubDomain::where('id_domain', 2)->where('id', $active->type_id)->pluck('description', 'id');
+        $ubications = SubDomain::where('id_domain', 2)->where('id', $active->ubication_id)->pluck('description', 'id');
+        $brands = SubDomain::where('id_domain', 6)->where('id', $active->marca_id)->pluck('description', 'id');
+        // $confidencialities = SubDomain::where('id_domain', 4)->where('id', $active->confidentiality_id)->pluck('description', 'id');
+        // $integrities = SubDomain::where('id_domain', 5)->where('id', $active->integrity_id)->pluck('description', 'id');
+        // $disponibilities = SubDomain::where('id_domain', 6)->where('id', $active->disponibility_id)->pluck('description', 'id');
+        // $justifications = SubDomain::where('id_domain', 7)->where('id', $active->justification_id)->pluck('description', 'id');
         $owners = User::pluck('name', 'id');
-        $access = SubDomain::where('id_domain', 9)->where('id', $active->access_id)->pluck('description', 'id');
-        $status = SubDomain::where('id_domain', 10)->where('id', $active->status_id)->pluck('description', 'id');
-        $clasifications = SubDomain::where('id_domain', 12)->where('id', $active->clasification_id)->pluck('description', 'id');
+        $access = SubDomain::where('id_domain', 3)->where('id', $active->access_id)->pluck('description', 'id');
+        // $status = SubDomain::where('id_domain', 10)->where('id', $active->status_id)->pluck('description', 'id');
+        // $clasifications = SubDomain::where('id_domain', 12)->where('id', $active->clasification_id)->pluck('description', 'id');
         $active->dateAdmission = new \DateTime($active->dateAdmission);
-        $categories = SubDomain::where('id_domain', 15)->where('id', $active->category_id)->pluck('description', 'id');
+        $categories = SubDomain::where('id_domain', 4)->where('id', $active->category_id)->pluck('description', 'id');
 
         return view('active.show', compact(
             'active',
             'areas',
-            'types',
+            // 'types',
             'ubications',
-            'confidencialities',
-            'integrities',
-            'disponibilities',
-            'justifications',
+            'brands',
+            // 'confidencialities',
+            // 'integrities',
+            // 'disponibilities',
+            // 'justifications',
             'owners',
             'access',
-            'status',
-            'clasifications',
+            // 'status',
+            // 'clasifications',
             'categories'
         ));
     }
@@ -200,33 +207,35 @@ class ActiveController extends Controller
 
         // Recupera los datos necesarios de las tablas relacionadas
         $areas = SubDomain::where('id_domain', 1)->pluck('description', 'id');
-        $types = SubDomain::where('id_domain', 2)->pluck('description', 'id');
-        $ubications = SubDomain::where('id_domain', 3)->pluck('description', 'id');
-        $confidencialities = SubDomain::where('id_domain', 4)->pluck('description', 'id');
-        $integrities = SubDomain::where('id_domain', 5)->pluck('description', 'id');
-        $disponibilities = SubDomain::where('id_domain', 6)->pluck('description', 'id');
-        $justifications = SubDomain::where('id_domain', 7)->pluck('description', 'id');
+        // $types = SubDomain::where('id_domain', 2)->pluck('description', 'id');
+        $ubications = SubDomain::where('id_domain', 2)->pluck('description', 'id');
+        $brands = SubDomain::where('id_domain', 6)->pluck('description', 'id');
+        // $confidencialities = SubDomain::where('id_domain', 4)->pluck('description', 'id');
+        // $integrities = SubDomain::where('id_domain', 5)->pluck('description', 'id');
+        // $disponibilities = SubDomain::where('id_domain', 6)->pluck('description', 'id');
+        // $justifications = SubDomain::where('id_domain', 7)->pluck('description', 'id');
         $owners = User::pluck('name', 'id');
-        $access = SubDomain::where('id_domain', 9)->pluck('description', 'id');
-        $status = SubDomain::where('id_domain', 10)->pluck('description', 'id');
+        $access = SubDomain::where('id_domain', 3)->pluck('description', 'id');
+        // $status = SubDomain::where('id_domain', 10)->pluck('description', 'id');
         //$actualizations = SubDomain::where('id_domain', 11)->pluck('description', 'id');
-        $clasifications = SubDomain::where('id_domain', 12)->pluck('description', 'id');
-        $categories = SubDomain::where('id_domain', 15)->pluck('description', 'id');
+        // $clasifications = SubDomain::where('id_domain', 12)->pluck('description', 'id');
+        $categories = SubDomain::where('id_domain', 4)->pluck('description', 'id');
 
         // Pasa los datos recuperados a la vista 'active.edit' junto con el registro que deseas editar.
         return view('active.edit', compact(
             'active',
             'areas',
-            'types',
+            // 'types',
             'ubications',
-            'confidencialities',
-            'integrities',
-            'disponibilities',
-            'justifications',
+            'brands',
+            // 'confidencialities',
+            // 'integrities',
+            // 'disponibilities',
+            // 'justifications',
             'owners',
             'access',
-            'status',
-            'clasifications',
+            // 'status',
+            // 'clasifications',
             'categories'
         ));
     }
@@ -249,7 +258,7 @@ class ActiveController extends Controller
     {
         $active = Active::find($id);
         if ($active) {
-            $active->state_id = 65;
+            $active->state_id = 2;
             $active->save();
         }
 

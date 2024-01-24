@@ -43,7 +43,7 @@ class UserController extends Controller
         // Cifra la contraseña
         $validatedData['password'] = bcrypt($validatedData['password']);
         $user = User::create($validatedData)->syncRoles($request['roles']);
-
+        
         return redirect()->route('users.index')
             ->with('success', 'Usuario creado exitosamente');
     }
@@ -53,7 +53,7 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $user = new User();
-        $states = SubDomain::where('id_domain',16)->pluck('description', 'id');
+        $states = SubDomain::where('id_domain',5)->pluck('description', 'id');
         // $states = SubDomain::all();
         // dd($states);
         return view('user.create', compact('user', 'roles','states'));
@@ -70,7 +70,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all();
-        $states = SubDomain::where('id_domain',16)
+        $states = SubDomain::where('id_domain',5)
         ->pluck('description','id');
         return view('user.edit', compact(
             'user',
@@ -103,12 +103,12 @@ class UserController extends Controller
 
         if (!$user) {
             return response()->json(['message' => 'Usuario no encontrado', 'type' => 'danger'], 404);
-        }elseif($user->state_id = 65){
+        }elseif($user->state_id = 2){
             session()->flash('warning', 'Usuario ya está inactivo');
         }
         else{
             // $user->delete();
-            $user->state_id = 65;
+            $user->state_id = 2;
             $user->save();
             session()->flash('delete_success', 'Usuario inactivado correctamente');
         }
