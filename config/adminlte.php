@@ -16,7 +16,8 @@ return [
 
     'title' => '',
     'title_prefix' => '',
-    'title_postfix' => '| Inventory',
+    'title_postfix' => '| Inventario
+    ',
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +65,7 @@ return [
     */
 
     // 'logo' => '<b>Inventory</b>System',
-'logo' => '<b>SGIA</b>',
+'logo' => '<b>SGI</b>',
 'logo_img' => 'vendor/adminlte/dist/img/logoTI.png',
 'logo_img_class' => 'brand-image img-circle elevation-3',
 'logo_img_xl' => null,
@@ -324,7 +325,7 @@ return [
             'text' => 'Estadísticas',
             'url'  => 'home',
             'icon' => 'fas fa-fw fa-clipboard',
-            'can' => 'home'
+            'can' => 'home',
         ],
         [
             'text' => 'Usuarios',
@@ -336,8 +337,14 @@ return [
             'text' => 'Activos',
             'url'  => 'actives',
             'icon' => 'fas fa-laptop',
-            'can' => 'actives.index'
+            'can' => 'actives.index',
         ],
+        [
+            'text' => 'Traslados',
+            'url'  => 'transfers',
+            'icon' => 'fas fa-exchange-alt',
+            // 'can' => 'transfers.index',
+        ]
         
         
         // ['header' => 'labels'],

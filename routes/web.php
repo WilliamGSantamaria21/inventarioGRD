@@ -31,6 +31,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('actives', App\Http\Controllers\ActiveController::class)->names('actives');
     // });
 
+    Route::resource('transfers', App\Http\Controllers\TransferController::class)->names('transfers');
+
     Route::get('profile', [UserController::class, 'profile'])->name('profile');
 
     // Route::middleware('can:admin.users.index')->group(function () {
