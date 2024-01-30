@@ -74,18 +74,9 @@ class TransferController extends Controller
     {
     }
 
-    //Función que se encarga de almacenar los datos de las solicitudes de transferencias en la base de datos
+    //Función que se encarga de almacenar los datos de las solicitudes de transferencia en la base de datos
     public function store(Request $request)
     {
-
-        // Valida los campos obligatorios, excluyendo departureDate
-        // $validatedData = $request->validate([
-        //     'owner_id' => 'required',
-        //     'new_owner_id' => 'required',
-        //     'actives_duallistbox' => 'required'
-        // ]);
-        
-        $datos_transferencia=[];
         $datos_solicitud=[];
 
         $datos_solicitud['user_id']=$request['owner_id'];
@@ -98,15 +89,11 @@ class TransferController extends Controller
 
         $activos=[];
         $activos=$request['actives_duallistbox'];
-        // dd($activos);
 
-        //$datos_transferencia['active_id']=$request['actives_duallistbox'];
         foreach($activos as $datos){
-            // dd($request);
             $data1['request_id']=$request1Id;
             $data1['active_id']=$datos[0];
             $request_created=Transfer::create($data1);
-            // dd($request_created->id);
         }
         return redirect()->route('transfers.index')
             ->with('success', 'Solicitud creada satisfactoriamente');
