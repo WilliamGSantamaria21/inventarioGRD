@@ -20,9 +20,8 @@
                             @include('transfer.form')
                             <div class="row">
                                 <div class="col-lg-12 mt-3">
-                                    @can('users.edit')
                                         <button type="submit" class="btn btn-success">{{ __('Crear') }}</button>
-                                    @endcan
+                    
                                     <a class="btn btn-light float-right" href="{{ route('transfers.index') }}"> {{ __('Volver') }}</a>
                                 </div>
                             </div>
